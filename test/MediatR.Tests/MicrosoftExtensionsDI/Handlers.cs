@@ -57,6 +57,16 @@ namespace MediatR.Extensions.Microsoft.DependencyInjection.Tests
         }
     }
 
+    public class GenericNotification<T> : INotification
+    {
+
+    }
+
+    public class GenericHandler<T> : INotificationHandler<GenericNotification<T>>
+    {
+        public Task Handle(GenericNotification<T> notification, CancellationToken cancellationToken) => Task.CompletedTask;
+    }
+
     public class DingAsyncHandler : IRequestHandler<Ding>
     {
         public Task Handle(Ding message, CancellationToken cancellationToken) => Task.CompletedTask;
